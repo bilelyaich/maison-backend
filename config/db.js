@@ -1,17 +1,12 @@
 const mongoose = require('mongoose');
-const User = require('../models/User'); // Assure-toi que ce chemin est correct
+const User = require('../models/User'); 
 
 const connectDB = async () => {
   try {
-    // Connexion à MongoDB 
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI);
  
     console.log('✅ MongoDB connected successfully');
 
-    // Création explicite de la collection
     await User.createCollection();
     console.log('✅ User collection created successfully');
     
